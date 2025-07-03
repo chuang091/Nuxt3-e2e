@@ -11,12 +11,12 @@
     "test": "vitest",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest",
-    "test:e2e": "playwright test tests/e2e/simple-todo.spec.ts",
-    "test:e2e:all": "playwright test",
+    "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report",
     "test:all": "npm run test:unit && npm run test:e2e",
+    "typecheck": "nuxt typecheck",
     "playwright:install": "npx playwright install"
   },
   "dependencies": {
