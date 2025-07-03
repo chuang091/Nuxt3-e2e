@@ -1,25 +1,30 @@
-// playwright.config.ts
 import { defineConfig, devices } from '@playwright/test'
+import type { ConfigOptions } from '@nuxt/test-utils/playwright'
 
-export default defineConfig({
+export default defineConfig<ConfigOptions>({
   testDir: './tests/e2e',
-  fullyParallel: false, // Run tests sequentially to avoid conflicts
+  fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
-  workers: 1, // Only one worker to avoid port conflicts
+  workers: process.env.CI ? 1 : undefined,
   reporter: 'html',
-
-  timeout: 60000, // 1 minute timeout
+  timeout: 30000, // 30 seconds per test
   expect: {
-    timeout: 10000, // 10 seconds for assertions
+    timeout: 5000, // 5 seconds for assertions
   },
 
   use: {
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
     screenshot: 'only-on-failure',
-    actionTimeout: 15000, // 15 seconds for actions
-    navigationTimeout: 30000, // 30 seconds for navigation
+    actionTimeout: 10000, // 10 seconds for actions
+    navigationTimeout: 15000, // 15 seconds for navigation
+    // Add headless mode for CI environments
+    headless: true,
+    nuxt: {
+      rootDir: '.',
+      setupTimeout: 60000, // 1 minute for setup
+    },
   },
 
   projects: [
@@ -27,16 +32,16 @@ export default defineConfig({
       name: 'chromium',
       use: {
         ...devices['Desktop Chrome'],
-        // Don't use headless for debugging
-        headless: false,
+        // Override headless setting if needed
+        headless: true,
       },
     },
   ],
 
-  // Don't auto-start server, assume it's already running
-  // webServer: {
-  //   command: 'npm run dev',
-  //   port: 3000,
-  //   reuseExistingServer: true,
-  // }
+  webServer: {
+    command: 'npm run dev',
+    port: 3000,
+    reuseExistingServer: !process.env.CI,
+    timeout: 60000, // 1 minute to start server
+  },
 })
