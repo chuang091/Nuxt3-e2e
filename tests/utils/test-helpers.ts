@@ -1,4 +1,3 @@
-
 // tests/utils/test-helpers.ts
 import type { Todo } from '~/types/todo'
 
@@ -6,7 +5,7 @@ export const createMockTodo = (overrides: Partial<Todo> = {}): Todo => ({
   id: '1',
   text: 'Test todo',
   completed: false,
-  ...overrides
+  ...overrides,
 })
 
 export const createMockTodos = (count: number = 3): Todo[] => {

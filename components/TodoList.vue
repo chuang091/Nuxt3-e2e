@@ -2,9 +2,18 @@
 <template>
   <div class="space-y-3">
     <!-- Empty State -->
-    <div v-if="todos.length === 0" class="text-center py-8">
-      <UIcon name="i-heroicons-clipboard-document-list" class="w-12 h-12 text-gray-400 mx-auto mb-4" />
-      <p class="text-gray-500 dark:text-gray-400" data-testid="empty-state">
+    <div
+      v-if="todos.length === 0"
+      class="text-center py-8"
+    >
+      <UIcon
+        name="i-heroicons-clipboard-document-list"
+        class="w-12 h-12 text-gray-400 mx-auto mb-4"
+      />
+      <p
+        class="text-gray-500 dark:text-gray-400"
+        data-testid="empty-state"
+      >
         No todos yet. Add one above to get started!
       </p>
     </div>

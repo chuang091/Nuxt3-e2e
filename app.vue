@@ -2,7 +2,7 @@
 <template>
   <div id="app">
     <UApp>
-    <NuxtPage />
+      <NuxtPage />
     </UApp>
   </div>
 </template>
@@ -11,15 +11,15 @@
 // Global app configuration
 useHead({
   htmlAttrs: {
-    lang: 'en'
+    lang: 'en',
   },
   link: [
     {
       rel: 'icon',
       type: 'image/x-icon',
-      href: '/favicon.ico'
-    }
-  ]
+      href: '/favicon.ico',
+    },
+  ],
 })
 
 // Set color mode preference

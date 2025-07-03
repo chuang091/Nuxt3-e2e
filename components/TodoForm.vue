@@ -5,7 +5,10 @@
       <h2 class="text-lg font-semibold">Add New Todo</h2>
     </template>
 
-    <form class="flex gap-2" @submit.prevent="addTodo">
+    <form
+      class="flex gap-2"
+      @submit.prevent="addTodo"
+    >
       <UInput
         v-model="newTodoText"
         placeholder="What needs to be done?"
@@ -49,14 +52,15 @@ const addTodo = async () => {
   try {
     const newTodo: Omit<Todo, 'id'> = {
       text: newTodoText.value.trim(),
-      completed: false
+      completed: false,
     }
 
     emit('add', newTodo)
 
     // Reset form
     newTodoText.value = ''
-  } finally {
+  }
+  finally {
     isLoading.value = false
   }
 }

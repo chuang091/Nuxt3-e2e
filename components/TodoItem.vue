@@ -18,7 +18,7 @@
           'text-sm font-medium',
           todo.completed
             ? 'line-through text-gray-500 dark:text-gray-400'
-            : 'text-gray-900 dark:text-gray-100'
+            : 'text-gray-900 dark:text-gray-100',
         ]"
         :data-testid="`todo-text-${todo.id}`"
       >

@@ -8,12 +8,12 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: 1, // Only one worker to avoid port conflicts
   reporter: 'html',
-  
+
   timeout: 60000, // 1 minute timeout
   expect: {
-    timeout: 10000 // 10 seconds for assertions
+    timeout: 10000, // 10 seconds for assertions
   },
-  
+
   use: {
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',
@@ -25,14 +25,14 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { 
+      use: {
         ...devices['Desktop Chrome'],
         // Don't use headless for debugging
         headless: false,
       },
     },
   ],
-  
+
   // Don't auto-start server, assume it's already running
   // webServer: {
   //   command: 'npm run dev',

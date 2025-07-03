@@ -37,13 +37,13 @@ describe('TodoForm', () => {
 
     const emittedEvents = component.emitted('add')
     expect(emittedEvents).toHaveLength(1)
-    
+
     interface TodoEventData {
-      text: string;
-      completed: boolean;
+      text: string
+      completed: boolean
     }
 
-    const emittedData = emittedEvents![0][0] as TodoEventData;
+    const emittedData = emittedEvents![0][0] as TodoEventData
     expect(emittedData.text).toBe('New todo')
     expect(emittedData.completed).toBe(false)
   })

@@ -12,7 +12,8 @@ test.describe('Todo App - Basic Features', () => {
           localStorage.clear()
         }
       })
-    } catch {
+    }
+    catch {
       // Ignore localStorage errors in test environment
     }
   })
@@ -27,7 +28,7 @@ test.describe('Todo App - Basic Features', () => {
   test('adds and displays todo', async ({ page }) => {
     await page.getByTestId('todo-input').fill('My first todo')
     await page.getByTestId('add-todo-button').click()
-    
+
     await expect(page.getByTestId('todo-text-1')).toContainText('My first todo')
     await expect(page.getByTestId('todo-input')).toHaveValue('')
     await expect(page.getByTestId('stats-total')).toContainText('1')
@@ -37,10 +38,10 @@ test.describe('Todo App - Basic Features', () => {
     // Add a todo
     await page.getByTestId('todo-input').fill('Test todo')
     await page.getByTestId('add-todo-button').click()
-    
+
     // Toggle completion
     await page.getByTestId('todo-checkbox-1').click()
-    
+
     // Check completed state
     await expect(page.getByTestId('todo-text-1')).toHaveClass(/line-through/)
     await expect(page.getByTestId('stats-completed')).toContainText('1')
@@ -50,10 +51,10 @@ test.describe('Todo App - Basic Features', () => {
     // Add a todo
     await page.getByTestId('todo-input').fill('Delete me')
     await page.getByTestId('add-todo-button').click()
-    
+
     // Delete it
     await page.getByTestId('todo-delete-1').click()
-    
+
     // Check it's gone
     await expect(page.getByTestId('empty-state')).toBeVisible()
     await expect(page.getByTestId('stats-total')).toContainText('0')

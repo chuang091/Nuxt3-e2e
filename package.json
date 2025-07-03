@@ -11,13 +11,18 @@
     "test": "vitest",
     "test:unit": "vitest run",
     "test:unit:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:coverage:watch": "vitest --coverage",
+    "test:coverage:ui": "vitest --coverage --ui",
     "test:e2e": "playwright test",
     "test:e2e:headed": "playwright test --headed",
     "test:e2e:ui": "playwright test --ui",
     "test:e2e:report": "playwright show-report",
     "test:all": "npm run test:unit && npm run test:e2e",
     "typecheck": "nuxt typecheck",
-    "playwright:install": "npx playwright install"
+    "playwright:install": "npx playwright install",
+"lint": "eslint .",
+"lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@nuxt/eslint": "^1.5.1",
@@ -32,6 +37,8 @@
   "devDependencies": {
     "@nuxt/test-utils": "^3.19.2",
     "@playwright/test": "^1.53.2",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
     "@vue/test-utils": "^2.4.6",
     "happy-dom": "^18.0.1",
     "playwright-core": "^1.53.2",

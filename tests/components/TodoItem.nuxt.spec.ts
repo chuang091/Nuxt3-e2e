@@ -6,12 +6,12 @@ describe('TodoItem', () => {
   const mockTodo = {
     id: '1',
     text: 'Test todo',
-    completed: false
+    completed: false,
   }
 
   it('renders todo item correctly', async () => {
     const component = await mountSuspended(TodoItem, {
-      props: { todo: mockTodo }
+      props: { todo: mockTodo },
     })
 
     expect(component.find('[data-testid="todo-text-1"]').text()).toBe('Test todo')
@@ -22,7 +22,7 @@ describe('TodoItem', () => {
   it('shows completed state correctly', async () => {
     const completedTodo = { ...mockTodo, completed: true }
     const component = await mountSuspended(TodoItem, {
-      props: { todo: completedTodo }
+      props: { todo: completedTodo },
     })
 
     const todoText = component.find('[data-testid="todo-text-1"]')
@@ -32,7 +32,7 @@ describe('TodoItem', () => {
 
   it('emits toggle event when checkbox is clicked', async () => {
     const component = await mountSuspended(TodoItem, {
-      props: { todo: mockTodo }
+      props: { todo: mockTodo },
     })
 
     await component.find('[data-testid="todo-checkbox-1"]').trigger('click')
@@ -41,7 +41,7 @@ describe('TodoItem', () => {
 
   it('emits delete event when delete button is clicked', async () => {
     const component = await mountSuspended(TodoItem, {
-      props: { todo: mockTodo }
+      props: { todo: mockTodo },
     })
 
     await component.find('[data-testid="todo-delete-1"]').trigger('click')

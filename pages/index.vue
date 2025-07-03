@@ -22,7 +22,7 @@
           <span data-testid="stats-completed">{{ stats.completed }}</span> completed,
           <span data-testid="stats-pending">{{ stats.pending }}</span> pending
         </div>
-        
+
         <UButton
           v-if="stats.completed > 0"
           color="error"
@@ -36,8 +36,14 @@
       </div>
 
       <!-- Loading State -->
-      <div v-if="isLoading" class="text-center py-8">
-        <UIcon name="i-heroicons-arrow-path" class="w-8 h-8 animate-spin text-blue-500 mx-auto mb-4" />
+      <div
+        v-if="isLoading"
+        class="text-center py-8"
+      >
+        <UIcon
+          name="i-heroicons-arrow-path"
+          class="w-8 h-8 animate-spin text-blue-500 mx-auto mb-4"
+        />
         <p class="text-gray-500 dark:text-gray-400">Loading todos...</p>
       </div>
 
@@ -76,7 +82,7 @@ const stats = computed(() => {
   return {
     total,
     completed,
-    pending
+    pending,
   }
 })
 
@@ -93,7 +99,8 @@ const loadTodos = () => {
       if (savedTodos) {
         todos.value = JSON.parse(savedTodos)
       }
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Error loading todos:', error)
     }
   }
@@ -104,7 +111,8 @@ const saveTodos = () => {
   if (import.meta.client) {
     try {
       localStorage.setItem('todos', JSON.stringify(todos.value))
-    } catch (error) {
+    }
+    catch (error) {
       console.error('Error saving todos:', error)
     }
   }
@@ -117,7 +125,7 @@ watch(todos, saveTodos, { deep: true })
 const handleAddTodo = (todoData: Omit<Todo, 'id'>) => {
   const newTodo: Todo = {
     id: generateId(),
-    ...todoData
+    ...todoData,
   }
   todos.value.push(newTodo)
 }

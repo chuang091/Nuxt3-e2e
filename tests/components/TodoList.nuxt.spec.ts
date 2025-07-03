@@ -7,18 +7,18 @@ describe('TodoList', () => {
     {
       id: '1',
       text: 'First todo',
-      completed: false
+      completed: false,
     },
     {
       id: '2',
       text: 'Second todo',
-      completed: true
-    }
+      completed: true,
+    },
   ]
 
   it('renders all todos', async () => {
     const component = await mountSuspended(TodoList, {
-      props: { todos: mockTodos }
+      props: { todos: mockTodos },
     })
 
     expect(component.findAll('[data-testid^="todo-text-"]')).toHaveLength(2)
@@ -28,7 +28,7 @@ describe('TodoList', () => {
 
   it('shows empty state when no todos', async () => {
     const component = await mountSuspended(TodoList, {
-      props: { todos: [] }
+      props: { todos: [] },
     })
 
     expect(component.find('[data-testid="empty-state"]').exists()).toBe(true)
@@ -37,7 +37,7 @@ describe('TodoList', () => {
 
   it('forwards events correctly', async () => {
     const component = await mountSuspended(TodoList, {
-      props: { todos: mockTodos }
+      props: { todos: mockTodos },
     })
 
     // Test toggle event
