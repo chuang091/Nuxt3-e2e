@@ -1,9 +1,6 @@
 /* assets/css/main.css */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-@import "tailwindcss" theme(static);
+@import "tailwindcss";
 @import "@nuxt/ui";
 
 /* Custom styles */

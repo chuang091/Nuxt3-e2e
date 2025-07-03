@@ -1,7 +1,7 @@
 <!-- pages/index.vue -->
 <template>
   <div class="min-h-screen bg-gray-50 dark:bg-gray-900">
-    <div class="container mx-auto px-4 py-8 max-w-4xl">
+    <div class="max-w-4xl mx-auto px-4 py-8">
       <!-- Header -->
       <div class="text-center mb-8">
         <h1 class="text-4xl font-bold text-gray-900 dark:text-white mb-2">
@@ -82,7 +82,7 @@ const stats = computed(() => {
 
 // Generate unique ID
 const generateId = () => {
-  return Date.now().toString(36) + Math.random().toString(36).substr(2)
+  return (todos.value.length + 1).toString()
 }
 
 // Load todos from localStorage

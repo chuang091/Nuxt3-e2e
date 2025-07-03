@@ -29,7 +29,7 @@
     <!-- Delete Button -->
     <UButton
       icon="i-heroicons-trash"
-      size="xs"
+      size="lg"
       color="error"
       variant="ghost"
       :data-testid="`todo-delete-${todo.id}`"
