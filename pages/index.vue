@@ -1,0 +1,3 @@
+<template>
+  <TheTest />
+</template>
